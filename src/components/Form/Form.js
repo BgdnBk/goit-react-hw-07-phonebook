@@ -3,7 +3,7 @@ import shortid from "shortid";
 import s from "../Form/Form.module.css";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
-import phonebookAction from "../../redux/phonebook/phonebook-action";
+import phonebookOperations from "../../redux/phonebook/phonebook-operation";
 
 class Form extends Component {
   state = {
@@ -30,15 +30,15 @@ class Form extends Component {
     e.preventDefault();
 
     // const checkName = this.props.contactList({ name: this.state.name });
-    // const checNumer = this.state.number;
+    const checNumer = this.state.number;
 
     // if (checkName) {
     //   return toast.error("Это имя уже существует");
     // }
 
-    // if (checNumer === "") {
-    //   return toast.error("Введите номер");
-    // }
+    if (checNumer === "") {
+      return toast.error("Введите номер");
+    }
 
     this.props.onSubmit({
       id: shortid.generate(),
@@ -89,8 +89,9 @@ class Form extends Component {
   }
 }
 
-const checkName = (contactList, name) => {
-  return contactList.some(({ name }) => name === name);
+const checkName = (contactList, newName) => {
+  console.log("NewName", newName);
+  return contactList?.some(({ name }) => name === newName);
 };
 
 const mapStateToProps = (state) => ({
@@ -98,11 +99,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (name, number, contactList) => {
-    // if (checkName(contactList, name)) {
-    //   return toast.error("Это имя уже существует");
-    // }
-    dispatch(phonebookAction.addContact(name, number));
+  onSubmit: (newName, number, contactList) => {
+    if (checkName(contactList, newName)) {
+      return toast.error("Это имя уже существует");
+    }
+    dispatch(phonebookOperations.addContact(newName, number));
   },
 });
 

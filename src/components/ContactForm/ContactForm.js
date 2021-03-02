@@ -2,7 +2,7 @@ import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import s from "../ContactForm/ContactForm.module.css";
 import { connect } from "react-redux";
-import phonebookAction from "../../redux/phonebook/phonebook-action";
+import * as phonebookAction from "../../redux/phonebook/phonebook-action";
 
 function СontactForm({ contactList, onDeleted }) {
   return (
@@ -29,9 +29,9 @@ function СontactForm({ contactList, onDeleted }) {
 
 const getFilter = (allContacts, filter) => {
   const filterValues = filter.toLowerCase();
-  console.log("this is ALLCONT", allContacts);
+
   return allContacts.filter(({ name }) =>
-    name.toLowerCase().includes(filterValues)
+    name?.toLowerCase().includes(filterValues)
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import shortid from "shortid";
 import s from "../Filter/Filter.module.css";
 import { connect } from "react-redux";
-import phonebookAction from "../../redux/phonebook/phonebook-action";
+import * as phonebookAction from "../../redux/phonebook/phonebook-action";
 
 function Filter({ value, searchContact }) {
   const id = shortid.generate();
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  searchContact: (e) => dispatch(phonebookAction.filter(e.target.value)),
+  searchContact: (e) => dispatch(phonebookAction.changeFilter(e.target.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
