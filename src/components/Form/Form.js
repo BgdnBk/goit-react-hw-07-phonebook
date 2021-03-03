@@ -90,7 +90,6 @@ class Form extends Component {
 }
 
 const checkName = (contactList, newName) => {
-  console.log("NewName", newName);
   return contactList?.some(({ name }) => name === newName);
 };
 

@@ -6,7 +6,7 @@ import * as phonebookAction from "../../redux/phonebook/phonebook-action";
 
 function Filter({ value, searchContact }) {
   const id = shortid.generate();
-  console.log("this is value filter", value);
+
   return (
     <div className={s.containerSearch}>
       <label className={s.labelSearch} htmlFor={id}>

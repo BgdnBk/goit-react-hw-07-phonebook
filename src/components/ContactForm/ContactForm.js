@@ -2,7 +2,7 @@ import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import s from "../ContactForm/ContactForm.module.css";
 import { connect } from "react-redux";
-import * as phonebookAction from "../../redux/phonebook/phonebook-action";
+import phonebookOperations from "../../redux/phonebook/phonebook-operation";
 
 function СontactForm({ contactList, onDeleted }) {
   return (
@@ -40,7 +40,7 @@ const mapStateToProps = ({ phonebook: { contacts, filter } }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onDeleted: (id) => dispatch(phonebookAction.deleteContact(id)),
+  onDeleted: (id) => dispatch(phonebookOperations.deleteContact(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(СontactForm);
