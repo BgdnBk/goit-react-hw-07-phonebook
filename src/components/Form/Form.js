@@ -41,7 +41,7 @@ class Form extends Component {
     }
 
     this.props.onSubmit({
-      id: shortid.generate(),
+      // id: shortid.generate(),
       name: this.state.name,
       number: this.state.number,
     });

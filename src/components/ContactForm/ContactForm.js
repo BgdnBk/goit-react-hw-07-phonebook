@@ -29,6 +29,7 @@ function СontactForm({ contactList, onDeleted }) {
 
 const getFilter = (allContacts, filter) => {
   const filterValues = filter.toLowerCase();
+  console.log(allContacts);
 
   return allContacts.filter(({ name }) =>
     name?.toLowerCase().includes(filterValues)

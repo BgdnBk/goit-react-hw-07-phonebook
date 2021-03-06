@@ -3,6 +3,7 @@ import shortid from "shortid";
 import s from "../Filter/Filter.module.css";
 import { connect } from "react-redux";
 import * as phonebookAction from "../../redux/phonebook/phonebook-action";
+import phonebookSelector from "../../redux/phonebook/phonebook-selector";
 
 function Filter({ value, searchContact }) {
   const id = shortid.generate();
@@ -24,7 +25,7 @@ function Filter({ value, searchContact }) {
   );
 }
 const mapStateToProps = (state) => ({
-  value: state.phonebook.filter,
+  value: phonebookSelector.getFilter(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
